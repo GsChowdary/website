@@ -33,7 +33,7 @@ app.get('/query', async (req, res) => {
 //         res.status(500).json({ error: e.message });
 //     }
 // });
-app.post('/submit', async (req, res) => {
+app.post('/', async (req, res) => {
     try {
         const query = await querySvc.createPerson(req.body);
         res.json({ data: query, status: 'success' });
