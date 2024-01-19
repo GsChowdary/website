@@ -10,7 +10,7 @@ exports.getAllPersons = async () => {
 //     return awaitqueryModel.findById(id);
 // }
 
-exports.createPerson = async (query) => {
+exports.createquery = async (query) => {
     return await queryModel.create(query);
 }
 

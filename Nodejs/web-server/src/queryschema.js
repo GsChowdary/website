@@ -8,4 +8,5 @@ const querySchema = new Schema({
     Query: String,
 });
 
+
 module.exports = mongoose.model("Query", querySchema);
