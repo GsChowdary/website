@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const querySvc = require('./queryservice');
+const courseSvc = require('./courseservice')
 
 const app = express();
 const port = 8080;
@@ -9,8 +10,7 @@ const port = 8080;
 app.use(express.static('website'));
 
 app.use(express.json());
-app.unsubscribe(bodyParser.urlencoded({ extended: true }));
-//Alternative option is //body-parser package
+app.unsubscribe(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
     console.log("Incoming req URL", req.url);
@@ -25,23 +25,14 @@ app.get('/', async (req, res) => {
         res.status(500).json({ error: e.message });
     }
 });
-
-// app.get('/person/:id', async (req, res) => {
-//     try {
-//         const persons = await personSvc.getOnePerson(req.params.id);
-//         res.json({ data: persons, status: 'success' });
-//     } catch (e) {
-//         res.status(500).json({ error: e.message });
-//     }
-// });
-// app.post('/', async (req, res) => {
-//     try {
-//         const query = await querySvc.createPerson(req.body);
-//         res.json({ data: query, status: 'success' });
-//     } catch (e) {
-//         res.status(500).json({ error: e.message });
-//     }
-// });
+app.get('/courses', async (req, res) => {
+    try {
+        const courses = await courseSvc.getAllCourses();
+        res.json({ data: courses, status: 'success' });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
 
 app.post('/query', async (req, res) => {
     try {
@@ -51,25 +42,6 @@ app.post('/query', async (req, res) => {
         res.status(500).json({ error: e.message });
     }
 });
-
-// app.put('/person/:id', async (req, res) => {
-//     try {
-//         await personSvc.updatePerson(req.params.id, req.body);
-//         const persons = await personSvc.getOnePerson(req.params.id);
-//         res.json({ data: persons, status: 'success' });
-//     } catch (e) {
-//         res.status(500).json({ error: e.message });
-//     }
-// });
-
-// app.delete('/person/:id', async (req, res) => {
-//     try {
-//         await personSvc.deletePerson(req.params.id);
-//         res.json({ status: 'success' });
-//     } catch (e) {
-//         res.status(500).json({ error: e.message });
-//     }
-// });
 
 app.listen(port, () => {
     console.log(`Application is running on port ${port}`);
