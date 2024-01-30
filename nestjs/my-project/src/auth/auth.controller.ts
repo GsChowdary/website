@@ -1,20 +1,39 @@
-import { Body, Controller, Post, HttpCode, HttpStatus, Get, UseGuards, Request } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+// src/auth/auth.controller.ts
+import { Get, Post, Render, UseGuards, Request, Res, Body, Controller } from '@nestjs/common';
+import { Response } from 'express';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { CreateCatDto } from './dto/cat';
 
 @Controller('auth')
 export class AuthController {
     constructor(private authService: AuthService) { }
 
-    @HttpCode(HttpStatus.OK)
-    @Post('login')
-    signIn(@Body() signInDto: Record<string, any>) {
-        return this.authService.signIn(signInDto.username, signInDto.password);
+    @Get('login')
+    @Render('login') // Assuming 'login.html' is in the 'public' folder
+    getLogin() {
+        return {};
     }
 
-    @UseGuards(AuthGuard)
-    @Get('profile')
-    getProfile(@Request() req) {
-        return req.user;
+    @Post('register')
+    async register(@Body() registerDto: { username: string, password: string }) {
+        return this.authService.createUser(registerDto.username, registerDto.password);
     }
+
+    @UseGuards(JwtAuthGuard)
+    @Post('cats')
+    async createCat(@Request() req, @Body() createCatDto: CreateCatDto) {
+        const userId = req.user.sub;
+        return this.authService.associateCatWithUser(userId, createCatDto);
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Get('cats')
+    @Render('cats') // Assuming 'cats.html' is in the 'public' folder
+    async getUserCats(@Request() req) {
+        const userId = req.user.sub;
+        const cats = await this.authService.getUserCats(userId);
+        return { cats };
+    }
+
+    // Existing methods...
 }
