@@ -3,6 +3,7 @@ import { CatsService } from './cat.service';
 import { Cat } from 'src/schemas/cat.schema';
 import { CreateCatDto } from 'src/dto/cat';
 import { JwtService } from '@nestjs/jwt';
+import { AuthGuard } from '../auth/auth.guard';
 
 @Controller('cat')
 export class CatController {
