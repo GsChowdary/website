@@ -1,22 +1,43 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+// src/auth/auth.service.ts
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { CatsService } from 'src/cat/cat.service';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import * as bcrypt from 'bcryptjs';
+import { User, UserDocument } from './user.model';
+import { Cat, CatDocument } from '../cat/schemas/cat.schema';
+import { CreateCatDto } from './dto/cat';
 
 @Injectable()
 export class AuthService {
-    constructor(private usersService: UsersService,
-        private jwtService: JwtService,
-        private catService: CatsService) { }
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(Cat.name) private catModel: Model<CatDocument>,
+    private jwtService: JwtService,
+  ) {}
 
-    async signIn(username: string, pass: string): Promise<any> {
-        const user = await this.usersService.findOne(username);
-        if (user?.password !== pass) {
-            throw new UnauthorizedException();
-        }
-        const payload = { sub: user._id, username: user.username };
-        return {
-            access_token: await this.jwtService.signAsync(payload),
-        };
+  async createUser(username: string, password: string): Promise<User> {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new this.userModel({ username, password: hashedPassword });
+    return user.save();
+  }
+
+  async associateCatWithUser(userId: string, createCatDto: CreateCatDto): Promise<Cat> {
+    const user = await this.userModel.findById(userId).exec();
+    if (!user) {
+      throw new NotFoundException('User not found');
     }
+
+    const cat = new this.catModel(createCatDto);
+    user.cats.push(cat);
+    await user.save();
+    return cat;
+  }
+
+  async getUserCats(userId: string): Promise<Cat[]> {
+    const user = await this.userModel.findById(userId).exec();
+    return user?.cats || [];
+  }
+
+  // Existing methods...
 }
