@@ -40,7 +40,7 @@
         const courseDetailsContainer = document.getElementById('courseDetails');
         courseDetailsContainer.innerHTML = '';
 
-        coutse.data.forEach(course => {
+        coutse.data(course => {
           const courseDiv = document.createElement('div');
           courseDiv.innerHTML = '<h4>${course.Name}</h4>';
           courseDetailsContainer.appendChild(courseDiv);
