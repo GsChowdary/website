@@ -1,0 +1,9 @@
+/* External css */
+/* String color */
+div { color: blue; font-size: 14px;}
+/* RGB */
+h1 { color: rgb(8, 53, 8);}
+/* Hex */
+h2 { color: #ff0000}
+/* Hue Saturation */
+h3 {color: hsl(28, 100%, 50%);}

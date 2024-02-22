@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hoisting JS</title>
+    </head>
+    <body>
+        <h3>Error message to display</h3>
+        <p style="color: red;" id="errorMsg"></p>
+        <script> 
+            'use strict';
+            try{
+                x = 5;
+                console.log("X is = ", x);
+            }catch(e){
+                console.log("Error hapened", e.message);
+                document.getElementById('errorMsg').innerText = e.message;
+            }
+
+            try{
+                console.log("New code block");
+                let age = 17;
+
+                if(age < 18){
+                    // new Error('')
+                    throw "Age is less than 18 years";
+                }
+            }catch(e){
+                console.log("Error hapened", e);
+                document.getElementById('errorMsg').innerText = e.message || e;
+            }
+
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+Plan
+3 basic html
+3 basics css
+2 bootstrap
+3 - 5 days javascript
+1 typescript
+3 - 5 Node JS 
+5 Angular
+2 MongoDb
+
+Sample MEAN project

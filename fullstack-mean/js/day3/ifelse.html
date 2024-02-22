@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>If else JS</title>
+    </head>
+    <body>
+        <script> 
+        
+        var age = 19;
+        var testResult = false;
+
+        if(age >= 18){
+            console.log("You are eligible to apply");
+            if(testResult){
+                console.log("Congratulations, you have passed the test.");
+            }else{
+                console.log("Sorry you failed, try next time");
+            }
+        }else{
+            console.log("Sorry, You are no eligible");
+        }
+
+        // == & ===
+
+        var a = 10;
+        var b = '10';
+
+        if(a == b){
+            console.log("Same value");
+        }else{
+            console.log("Not same value");
+        }
+
+        if(a === b){
+            console.log("Same value & data type");
+        }else{
+            console.log("Not same value &  data type or one of them not same");
+        }
+
+
+        </script>
+    </body>
+</html>

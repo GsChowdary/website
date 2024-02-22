@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Company | Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-3">
+            <!-- Navigation section -->
+            <nav class="navbar navbar-expand-lg bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="home.html">
+                        <img src="./assets/logo.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top">
+                    </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link active" style="color: white;" aria-current="page" href="home.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="#">About Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" style="color: white;" href="#">Contact Us</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                  </form>
+                </div>
+            </nav>
+            
+            <div class="row mt-3">
+              <div class="col text-center">
+                <h2>Contact Us</h2>
+              </div>
+            </div>
+              <!-- Artical section -->
+              <div class="row mt-3">
+                <div class="col">
+                    <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Address</h5>
+                        <p class="card-text">Office No 123, <br> Main street, <br> Near Some hotel, <br> Amir Peth, Hydrabad</p>
+                        <h5 class="card-title">Contact Numbers</h5>
+                        <b>Landline</b>: 232323 <br>
+                        <b>Mobile</b> : +91 9921000000
+                    </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Contact Form</h5>
+                            <form action="/contact" method="get">
+                              <div class="form-group">
+                                <label for="userName">Name</label>
+                                <input type="text" class="form-control" id="userName" name="userName" aria-describedby="userNameHelp" placeholder="Enter your name">
+                                <small id="userNameHelp" class="form-text text-danger"></small>
+                              </div>
+                              <div class="form-group">
+                                <label for="userEmail">Email address</label>
+                                <input type="email" class="form-control" id="userEmail" name="useEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-danger"></small>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="userPhone">Mobile Number</label>
+                                <input type="tel" class="form-control" id="userPhone" name="userPhone" aria-describedby="userPhoneHelp" placeholder="Enter mobile number">
+                                <small id="userPhoneHelp" class="form-text text-danger"></small>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="userQuery">Query</label>
+                                <textarea class="form-control" id="userQuery" name="userQuery" aria-describedby="userQueryHelp" placeholder="Enter email" rows="3"> </textarea>
+                                <small id="userQueryHelp" class="form-text text-danger"></small>
+                              </div>
+
+                              <div id="formSucess" class="alert alert-success mt-3" style="display: none;" role="alert">
+                                Thanks for submitting details. We will contact you soon.
+                              </div>
+                              <div id="formError" class="alert alert-danger mt-3" style="display: none;" role="alert">
+                                Please fill correct information.
+                              </div>
+                              
+                              <button onclick="validateAndSubmit(event)" class="btn btn-primary mt-3">Submit</button>
+                            </form>
+                        </div>
+                        </div>
+                </div>
+              </div>
+              <!-- Footer section -->
+              <div class="row mt-3  bg-primary p-3">
+                <div class="col text-center">
+                    <h4 style="color: white;">Copyright @ Company, 2023</h4>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script>
+          const validateEmail = (email) => {
+              return email.match(
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              );
+          };
+
+          function isValidFormData(){
+            let uName = document.getElementById('userName').value;
+
+            let uEmail = document.getElementById('userEmail').value;
+
+            let uPhone = document.getElementById('userPhone').value;
+
+            let uQuery = document.getElementById('userQuery').value;
+
+            let validData = true;
+            //String and length 3 & above
+            if(uName && uName.length > 2){
+              document.getElementById('userNameHelp').innerText = '';
+            }else{
+              validData = false;
+              document.getElementById('userNameHelp').innerText = 'Please enter your name';
+            }
+
+            if(uEmail && uEmail.length && validateEmail(uEmail)){
+              document.getElementById('emailHelp').innerText = '';
+            }else{
+              validData = false;
+              document.getElementById('emailHelp').innerText = 'Please enter valid email';
+            }
+
+            if(uPhone && uPhone.length === 10){
+              document.getElementById('userPhoneHelp').innerText = '';
+            }else{
+              validData = false;
+              document.getElementById('userPhoneHelp').innerText = 'Please enter your 10 digit mobile phone number';
+            }
+
+            if(uQuery && uQuery.length > 5){
+              document.getElementById('userQueryHelp').innerText = '';
+            }else{
+              validData = false;
+              document.getElementById('userQueryHelp').innerText = 'Please enter your query';
+            }
+
+            return validData;
+          }
+
+          function validateAndSubmit(e){
+            if(isValidFormData()){
+              //Submit
+              document.getElementById('formSucess').style.display = 'block';
+              document.getElementById('formError').style.display = 'none';
+            }else{
+              // Show error
+              document.getElementById('formError').style.display = 'block';
+              document.getElementById('formSucess').style.display = 'none';
+              e.preventDefault();
+            }
+          }
+        </script>
+    </body>
+</html>

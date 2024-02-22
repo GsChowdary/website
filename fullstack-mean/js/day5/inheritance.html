@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class JS</title>
+    </head>
+    <body>
+        <h3>Class</h3>
+        <p style="color: red;" id="errorMsg"></p>
+        <script> 
+            'use strict';
+
+            try{
+                
+                class Car{
+                    constructor(fName){
+                        this.name = fName;
+                    }
+
+                    printName(){
+                        return this.name;
+                    }
+                }
+
+                class CarModel extends Car {
+                    constructor(brand, model){
+                        super(brand);
+                        this.model = model;
+                    }
+
+                    print(){
+                        document.getElementById('errorMsg').innerText = this.printName() + ' '+ this.model;
+                    }
+                }
+
+                let pObj = new CarModel('Ford', 'Mustang');
+                pObj.print();
+
+            }catch(e){
+                console.log("Error hapened", e);
+            }
+
+            
+        </script>
+    </body>
+</html>

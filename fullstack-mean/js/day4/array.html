@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Variables JS</title>
+    </head>
+    <body>
+        <script> 
+            let numArray = [1,2,3,4,5,6,7,8,9];
+
+            // Map : double the values
+            let newMappedArr = numArray.map((item)=> item * 2);
+
+            console.log("New arrary", newMappedArr.toString());
+
+            // Filter: return even numbers
+            let newEvenNoArr = numArray.filter((item)=> item % 2 === 0);
+            console.log("New filtered arrary", newEvenNoArr.toString());
+
+            //Reduce: addition of all numbers
+            let res = numArray.reduce((result,item)=> result+item , 0);
+            console.log("Final response is = ", res);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+<p *ngIf="show">I am visible {{show}}</p>
+
+<button (click)="toogle()">Hit to toogle</button>
+
+<h3>Course list</h3>
+<!-- <p>{{courses}}</p> -->
+<ol>
+    <li *ngFor="let course of courses">{{course}}</li>
+</ol>

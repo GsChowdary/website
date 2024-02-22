@@ -1,0 +1,19 @@
+$primary:black;
+$secondary:green;
+$large-font: 18px;
+$normal-font: 14px;
+
+h1{
+    font-size: $large-font;
+    color: $primary;
+}
+
+nav{
+    font-size: $normal-font;
+    color: $primary;
+}
+
+footer{
+    font-size: $large-font;
+    color: $secondary;
+}

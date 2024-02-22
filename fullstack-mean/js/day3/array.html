@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Variables JS</title>
+    </head>
+    <body>
+        <script> 
+        var cars = ['Volvo', 'Nissan', 'Tata'];
+        var othercars = new Array('Zusuki', 'Honda', 'Kia');
+
+        console.log("Total cars", cars.length);
+        console.log("Total othercars", othercars.length, othercars.toString());
+
+        //Push
+        cars.push('BMW');
+        console.log("Total cars", cars.length, cars.toString());
+
+        //Pop
+        var lastCar = cars.pop();
+        console.log("Total cars", cars.length, cars.toString(), "poped car", lastCar);
+
+        //Shift
+        var first = cars.shift();
+        console.log("Total cars", cars.length, cars.toString(), "first car", first);
+
+        //UnShift
+        cars.unshift('BMW');
+        console.log("Total cars", cars.length, cars.toString());
+
+        //Join => sting
+        var allCars = cars.join(othercars);
+        console.log("All cars", allCars.toString());
+
+        //at
+        console.log("othercars at 2", othercars.at(2), othercars[2]);
+
+        delete othercars[2];
+        console.log("othercars", othercars.toString());
+
+        //Concat
+        var allCars2 = cars.concat(othercars);
+        console.log("All cars", allCars2.toString());
+
+        //Sort
+        allCars2.sort();
+        console.log("All cars", allCars2.toString());
+
+        //reverse
+        allCars2.reverse();
+        console.log("All cars", allCars2.toString());
+
+
+        </script>
+    </body>
+</html>

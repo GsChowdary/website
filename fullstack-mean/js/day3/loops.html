@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Loop JS</title>
+    </head>
+    <body>
+        <script> 
+        var cars = ['Volvo', 'Nissan', 'Tata']
+
+        //for
+        for(var i=0; i< cars.length; i++){
+            console.log("Car = ", cars[i]);
+        }
+
+        //for in
+
+        for(var car in cars){
+            console.log("Car = ", cars[car]);
+        }
+
+        var person = {
+            name: 'Suresh',
+            adress: 'some adress',
+            age: 30,
+            isSaliried: true
+        };
+
+        for(var prop in person){
+            console.log("person = ", prop, person[prop]);
+        }
+
+        // for of
+        for(var car of cars){
+            console.log("Car = ", car);
+        }
+
+        //for
+        var i=0;
+        while(i< cars.length)
+        {
+            if(i== 0){
+                continue;
+            }
+            if(i == 1){
+                break;
+            }
+            console.log("Car = ", cars[i]);
+            i++;
+        }
+        
+        </script>
+    </body>
+</html>

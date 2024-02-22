@@ -1,0 +1,60 @@
+<div class="col-lg-8 mx-auto p-3 py-md-4">
+    <header class="d-flex align-items-center pb-3 mb-3 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <span class="fs-4">Contact Us</span>
+        </a>
+      </header>
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Address</h5>
+                <p class="card-text">Office No 123, <br> Main street, <br> Near Some hotel, <br> Amir Peth, Hydrabad</p>
+                <h5 class="card-title">Contact Numbers</h5>
+                <b>Landline</b>: 232323 <br>
+                <b>Mobile</b> : +91 9921000000
+            </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Contact Form</h5>
+                    <form [formGroup]="contactForm">
+                        <div class="form-group">
+                        <label for="userName">Name</label>
+                        <input type="text" formControlName="name" class="form-control" id="userName" aria-describedby="userNameHelp" placeholder="Enter your name">
+                        <small id="userNameHelp" class="form-text text-danger"></small>
+                        </div>
+                        <div class="form-group">
+                        <label for="userEmail">Email address</label>
+                        <input type="email" formControlName="email" class="form-control" id="userEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-danger"></small>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="userPhone">Mobile Number</label>
+                        <input type="tel" formControlName="phone" class="form-control" id="userPhone" aria-describedby="userPhoneHelp" placeholder="Enter mobile number">
+                        <small id="userPhoneHelp" class="form-text text-danger"></small>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="userQuery">Query</label>
+                        <textarea class="form-control" formControlName="query" id="userQuery" aria-describedby="userQueryHelp" placeholder="Enter email" rows="3"> </textarea>
+                        <small id="userQueryHelp" class="form-text text-danger"></small>
+                        </div>
+
+                        <div *ngIf="status" id="formSucess" class="alert alert-success mt-3" role="alert">
+                            Thanks for submitting details. We will contact you soon.
+                        </div>
+                        <div *ngIf="showError" id="formError" class="alert alert-danger mt-3" role="alert">
+                            Please fill correct information.
+                        </div>
+                        
+                        <button (click)="doSubmit()" class="btn btn-primary mt-3">Submit</button>
+                    </form>
+                </div>
+                </div>
+        </div>
+  </div>
+</div>

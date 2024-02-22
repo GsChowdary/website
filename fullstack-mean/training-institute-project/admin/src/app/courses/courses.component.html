@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col text-center">
+        <h3>All Courses</h3>
+    </div>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Duration</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Manage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of courses; let i = index;">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{c.name}}</td>
+        <td>{{c.duration}}</td>
+        <td>{{c.description}}</td>
+        <td>
+          <span *ngIf="c.show" class="badge text-bg-success"> Active </span> 
+          <span *ngIf="!c.show" class="badge text-bg-danger">Inactive</span>
+        </td>
+        <td>
+          <button type="button" (click)="deleteCourse(c._id)" class="btn btn-outline-danger btn-sm">Delete</button> &nbsp;
+          <button type="button" (click)="routeToEdit(c._id)" class="btn btn-outline-primary btn-sm">Edit</button> &nbsp;
+          <button type="button" (click)="changeStatus(c)" class="btn btn-outline-success btn-sm">{{c.show ? 'Hide': 'Show'}}</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
+

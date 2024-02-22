@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Class JS</title>
+    </head>
+    <body>
+        <h3>Class</h3>
+        <p style="color: green;" id="errorMsg"></p>
+        <p style="color: orange;" id="test"></p>
+        <script> 
+            'use strict';
+
+            try{
+                
+                function print(msg){
+                    document.getElementById('errorMsg').innerText = msg;
+                }
+
+                function add(no1,no2,cbFn){
+                    let res = no1+no2;
+                    cbFn(res);
+                }
+
+                add(10, 5, print);
+
+                //timeout
+                setTimeout(()=>{
+                    add(1, 1, print);
+                }, 5000);
+                document.getElementById('test').innerText = "I am after Timeout";
+
+
+            }catch(e){
+                console.log("Error hapened", e);
+            }
+
+            
+        </script>
+    </body>
+</html>

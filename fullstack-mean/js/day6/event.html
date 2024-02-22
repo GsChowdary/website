@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events JS</title>
+    </head>
+    <body>
+        <h3>Class</h3>
+        <p style="color: red;" id="errorMsg"></p>
+        <button onclick="show()"> Show result</button>
+        <button onmouseover="show()"> Show result on mouse over</button>
+        <script> 
+            'use strict';
+                
+            class Person{
+                constructor(fName, lName, city){
+                    this.fName = fName;
+                    this.lName = lName;
+                    this.city = city;
+                }
+
+                print(){
+                    //let data = 'Name : '+ this.fName + ' '+ this.lName +' ('+ this.city +')';
+                    let data2 = ` Name: ${this.fName} ${this.lName} (${this.city})`;
+                    document.getElementById('errorMsg').innerText = data2;
+                }
+            }
+
+            function show(){
+                let pObj = new Person('Prashant', 'Gunjal', 'Pune');
+                pObj.print();
+            }
+
+            
+        </script>
+    </body>
+</html>

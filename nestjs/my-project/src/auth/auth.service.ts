@@ -7,7 +7,7 @@ import { CatsService } from 'src/cat/cat.service';
 export class AuthService {
     constructor(private usersService: UsersService,
         private jwtService: JwtService,
-        private catService: CatsService) { }
+    ) { }
 
     async signIn(username: string, pass: string): Promise<any> {
         const user = await this.usersService.findOne(username);

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col text-center">
+        <h3>All Queries</h3>
+    </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">User Query</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of queries; let i = index;">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{c.name}}</td>
+      <td>{{c.email}}</td>
+      <td>{{c.phone}}</td>
+      <td>{{c.query}}</td>
+    </tr>
+  </tbody>
+</table>

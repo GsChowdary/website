@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS</title>
+    </head>
+    <body>
+        <h3>Promise</h3>
+        <p style="color: green;" id="errorMsg"></p>
+        <p style="color: orange;" id="test"></p>
+        <script>
+            'use strict';
+
+            // ** Promise states
+            // pending
+            // fulfilled
+            // rejected
+
+            // ** Collecting results
+            // then
+            // catch
+            try{
+                
+                function print(msg){
+                    document.getElementById('errorMsg').innerText = msg;
+                }
+
+                function printError(msg){
+                    document.getElementById('test').innerText = msg;
+                }
+
+                let myPromise = new Promise(function(successCB, rejectCb){
+                    let age = 21;
+
+                    if(age > 18){
+                        successCB('OK')
+                    }else{
+                        rejectCb('Not ok');
+                    }
+                });
+
+                myPromise.then(function(val){
+                    print(val);
+                }, function(err){
+                    printError(err);
+                });
+
+            }catch(e){
+                console.log("Error hapened", e);
+            }
+
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+"use strict";
+let userName = 'Prashant';
+userName.toLowerCase();
+let lastName;
+lastName = 'Prashant';
+let educationGrade;
+educationGrade = 'A+';
+educationGrade = null;
+let data = {};
+data = 1;
+data = 'abc';
+let middleName = new String('abc');
+middleName = 'qwe';
